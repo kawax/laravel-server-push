@@ -40,10 +40,10 @@ class ServerPush
      *
      * @return bool
      */
-    protected function shouldPush(Request $request, Response $response): bool
+    protected function shouldPush(Request $request, $response): bool
     {
         return ! $request->ajax()
             and $request->method() === 'GET'
-            and Str::contains($response->headers->get('Content-Type'), 'text/html');
+            and Str::contains($response->headers->get('Content-Type') ?? '', 'text/html');
     }
 }
