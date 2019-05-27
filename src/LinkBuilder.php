@@ -95,11 +95,8 @@ class LinkBuilder
             case 'js':
                 return 'script';
             case 'ttf':
-                return 'font';
             case 'otf':
-                return 'font';
             case 'woff':
-                return 'font';
             case 'woff2':
                 return 'font';
             default:
