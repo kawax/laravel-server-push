@@ -1,0 +1,9 @@
+{
+  "/js/app.js": "/js/app.js?id=aaaa",
+  "/css/app.css": "/css/app.css?id=aaaa",
+  "/font/app.ttf": "/font/test.ttf?id=aaaa",
+  "/font/app.otf": "/font/test.otf?id=aaaa",
+  "/font/app.woff": "/font/test.woff?id=aaaa",
+  "/font/app.woff2": "/font/test.woff2?id=aaaa",
+  "/image/app.jpg": "/image/test.jpg?id=aaaa"
+}
