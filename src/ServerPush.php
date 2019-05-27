@@ -5,7 +5,7 @@ namespace Revolution\ServerPush;
 use Closure;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Str;
 
 class ServerPush
@@ -28,7 +28,7 @@ class ServerPush
         if ($this->shouldPush($request, $response)) {
             $builder = resolve(LinkBuilder::class);
 
-            $response->header('Link', $builder->render(), false);
+            $response->headers->set('Link', $builder->render(), false);
         }
 
         return $response;
@@ -36,7 +36,7 @@ class ServerPush
 
     /**
      * @param  Request  $request
-     * @param  $response
+     * @param  Response  $response
      *
      * @return bool
      */
@@ -44,6 +44,7 @@ class ServerPush
     {
         return ! $request->ajax()
             and $request->method() === 'GET'
+            and $response instanceof Response
             and Str::contains($response->headers->get('Content-Type') ?? '', 'text/html');
     }
 }
