@@ -1,5 +1,8 @@
 # Laravel Server Push Middleware
 
+[![Build Status](https://travis-ci.com/kawax/laravel-server-push.svg?branch=master)](https://travis-ci.com/kawax/laravel-server-push)
+[![Maintainability](https://api.codeclimate.com/v1/badges/8fa23e8f590eb023ac91/maintainability)](https://codeclimate.com/github/kawax/laravel-server-push/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/8fa23e8f590eb023ac91/test_coverage)](https://codeclimate.com/github/kawax/laravel-server-push/test_coverage)
 
 Remake from
 https://github.com/tomschlick/laravel-http2-server-push
