@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -57,5 +58,19 @@ class ServerPushTest extends TestCase
 
         $this->assertTrue($res->headers->has('Link'));
         $this->assertContains('<css/test.css>; rel=preload; as=style', $res->headers->get('Link'));
+    }
+
+    public function testMiddlewareRedirect()
+    {
+        $middle = new ServerPush();
+
+        /**
+         * @var Response $res
+         */
+        $res = $middle->handle(Request::create(''), function ($request) {
+            return RedirectResponse::create('http://localhost');
+        });
+
+        $this->assertFalse($res->headers->has('Link'));
     }
 }

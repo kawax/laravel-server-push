@@ -36,7 +36,7 @@ class ServerPush
 
     /**
      * @param  Request  $request
-     * @param  Response  $response
+     * @param  $response
      *
      * @return bool
      */
