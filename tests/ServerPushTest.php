@@ -64,9 +64,6 @@ class ServerPushTest extends TestCase
     {
         $middle = new ServerPush();
 
-        /**
-         * @var Response $res
-         */
         $res = $middle->handle(Request::create(''), function ($request) {
             return RedirectResponse::create('http://localhost');
         });
@@ -78,9 +75,6 @@ class ServerPushTest extends TestCase
     {
         $middle = new ServerPush();
 
-        /**
-         * @var Response $res
-         */
         $res = $middle->handle(Request::create('', 'POST'), function ($request) {
             return Response::create('', 200, ['Content-Type' => 'text/html']);
         });
@@ -92,10 +86,7 @@ class ServerPushTest extends TestCase
     {
         $middle = new ServerPush();
 
-        /**
-         * @var Response $res
-         */
-        $res = $middle->handle(Request::create('', 'POST'), function ($request) {
+        $res = $middle->handle(Request::create(''), function ($request) {
             return 'test';
         });
 
