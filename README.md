@@ -23,7 +23,7 @@ https://github.com/tomschlick/laravel-http2-server-push
 composer require revolution/laravel-server-push
 ```
 
-### Publish config file
+### Publish config file (Optional)
 ```
 php artisan vendor:publish --provider="Revolution\ServerPush\Providers\ServerPushServiceProvider"
 ```
