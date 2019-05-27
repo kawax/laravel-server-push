@@ -73,4 +73,32 @@ class ServerPushTest extends TestCase
 
         $this->assertFalse($res->headers->has('Link'));
     }
+
+    public function testMiddlewarePost()
+    {
+        $middle = new ServerPush();
+
+        /**
+         * @var Response $res
+         */
+        $res = $middle->handle(Request::create('', 'POST'), function ($request) {
+            return Response::create('', 200, ['Content-Type' => 'text/html']);
+        });
+
+        $this->assertFalse($res->headers->has('Link'));
+    }
+
+    public function testMiddlewareString()
+    {
+        $middle = new ServerPush();
+
+        /**
+         * @var Response $res
+         */
+        $res = $middle->handle(Request::create('', 'POST'), function ($request) {
+            return 'test';
+        });
+
+        $this->assertNotEmpty($res);
+    }
 }
