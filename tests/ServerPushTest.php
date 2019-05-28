@@ -92,4 +92,18 @@ class ServerPushTest extends TestCase
 
         $this->assertNotEmpty($res);
     }
+
+    public function testAddLink()
+    {
+        /**
+         * @var LinkBuilder $builder
+         */
+        $builder = resolve(LinkBuilder::class);
+
+        $builder = $builder->addLink('/image/image.png')
+                           ->addLink('/css/test.css');
+
+        $this->assertInstanceOf(LinkBuilder::class, $builder);
+        $this->assertContains('</image/image.png>; rel=preload; as=image', $builder->render());
+    }
 }

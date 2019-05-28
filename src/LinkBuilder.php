@@ -68,8 +68,10 @@ class LinkBuilder
     /**
      * @param  string  $file
      * @param  string|null  $type
+     *
+     * @return  $this
      */
-    protected function addLink(string $file, string $type = null)
+    public function addLink(string $file, string $type = null)
     {
         $link = [
             'path' => $file,
@@ -77,6 +79,8 @@ class LinkBuilder
         ];
 
         $this->links->add($link);
+
+        return $this;
     }
 
     /**

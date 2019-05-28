@@ -38,6 +38,13 @@ protected $middlewareGroups = [
         ],
 ```
 
+## Instead of global helpers
+
+```php
+use Revolution\ServerPush\LinkBuilder;
+
+resolve(LinkBuilder::class)->addLink('/image/test.jpg')->addLink('/css/test.css');
+```
 
 ## LICENSE
 MIT  

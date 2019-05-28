@@ -3,6 +3,7 @@
 namespace Revolution\ServerPush\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Revolution\ServerPush\LinkBuilder;
 
 class ServerPushServiceProvider extends ServiceProvider
 {
@@ -26,5 +27,9 @@ class ServerPushServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/server-push.php', 'server-push'
         );
+
+        $this->app->singleton(LinkBuilder::class, function ($app) {
+            return new LinkBuilder();
+        });
     }
 }
