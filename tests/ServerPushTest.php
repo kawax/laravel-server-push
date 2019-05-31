@@ -2,12 +2,11 @@
 
 namespace Tests;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-
-use Revolution\ServerPush\LinkBuilder;
+use Illuminate\Http\RedirectResponse;
 use Revolution\ServerPush\ServerPush;
+use Revolution\ServerPush\LinkBuilder;
 
 class ServerPushTest extends TestCase
 {

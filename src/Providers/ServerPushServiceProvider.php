@@ -2,8 +2,8 @@
 
 namespace Revolution\ServerPush\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Revolution\ServerPush\LinkBuilder;
+use Illuminate\Support\ServiceProvider;
 
 class ServerPushServiceProvider extends ServiceProvider
 {
