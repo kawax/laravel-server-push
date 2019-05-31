@@ -2,10 +2,10 @@
 
 namespace Revolution\ServerPush;
 
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\File;
 
 class LinkBuilder
 {
@@ -29,7 +29,10 @@ class LinkBuilder
     public function render(): string
     {
         $links = $this->links->map(function ($link) {
-            return '<'.Arr::get($link, 'path').'>; rel=preload; as='.Arr::get($link, 'type');
+            $path = Arr::get($link, 'path');
+            $type = Arr::get($link, 'type');
+
+            return "<{$path}>; rel=preload; as={$type}";
         });
 
         return $links->implode(',');
@@ -60,22 +63,22 @@ class LinkBuilder
 
         collect(json_decode(File::get($manifest_path), true))
             ->values()
-            ->each(function ($file) {
-                $this->addLink($file);
+            ->each(function ($path) {
+                $this->addLink($path);
             });
     }
 
     /**
-     * @param  string  $file
+     * @param  string  $path
      * @param  string|null  $type
      *
      * @return  $this
      */
-    public function addLink(string $file, string $type = null)
+    public function addLink(string $path, string $type = null)
     {
         $link = [
-            'path' => $file,
-            'type' => $type ?? $this->type($file),
+            'path' => $path,
+            'type' => $type ?? $this->type($path),
         ];
 
         $this->links->add($link);
@@ -84,13 +87,13 @@ class LinkBuilder
     }
 
     /**
-     * @param  string  $file
+     * @param  string  $path
      *
      * @return string
      */
-    protected function type(string $file): string
+    protected function type(string $path): string
     {
-        $extension = File::extension($file);
+        $extension = File::extension($path);
         $extension = Str::before($extension, '?');
 
         switch ($extension) {
