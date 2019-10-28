@@ -17,7 +17,7 @@ class ServerPushTest extends TestCase
         $links = $builder->render();
 
         $this->assertNotEmpty($links);
-        $this->assertContains('<css/test.css>; rel=preload; as=style', $links);
+        $this->assertStringContainsString('<css/test.css>; rel=preload; as=style', $links);
     }
 
     public function testManifestDisable()
@@ -29,7 +29,7 @@ class ServerPushTest extends TestCase
         $links = $builder->render();
 
         $this->assertNotEmpty($links);
-        $this->assertNotContains('/js/app.js?id=aaaa', $links);
+        $this->assertStringNotContainsString('/js/app.js?id=aaaa', $links);
     }
 
     public function testManifestEmpty()
@@ -41,7 +41,7 @@ class ServerPushTest extends TestCase
         $links = $builder->render();
 
         $this->assertNotEmpty($links);
-        $this->assertNotContains('/js/app.js?id=aaaa', $links);
+        $this->assertStringNotContainsString('/js/app.js?id=aaaa', $links);
     }
 
     public function testMiddleware()
@@ -56,7 +56,7 @@ class ServerPushTest extends TestCase
         });
 
         $this->assertTrue($res->headers->has('Link'));
-        $this->assertContains('<css/test.css>; rel=preload; as=style', $res->headers->get('Link'));
+        $this->assertStringContainsString('<css/test.css>; rel=preload; as=style', $res->headers->get('Link'));
     }
 
     public function testMiddlewareRedirect()
@@ -103,6 +103,6 @@ class ServerPushTest extends TestCase
                            ->addLink('/css/test.css');
 
         $this->assertInstanceOf(LinkBuilder::class, $builder);
-        $this->assertContains('</image/image.png>; rel=preload; as=image', $builder->render());
+        $this->assertStringContainsString('</image/image.png>; rel=preload; as=image', $builder->render());
     }
 }
