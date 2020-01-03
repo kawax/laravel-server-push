@@ -14,7 +14,7 @@ https://github.com/tomschlick/laravel-http2-server-push
 - Compatible with `config/server-push.php`
 
 ## Requirements
-- PHP >= 7.1
+- PHP >= 7.2
 - Laravel >= 5.5
 
 ## Installation
