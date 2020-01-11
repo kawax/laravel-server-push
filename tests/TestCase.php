@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Revolution\ServerPush\Tests;
 
 use Revolution\ServerPush\Providers\ServerPushServiceProvider;
 

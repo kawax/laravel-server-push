@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Revolution\ServerPush\Tests;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
