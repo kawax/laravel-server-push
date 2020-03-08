@@ -3,8 +3,8 @@
 namespace Revolution\ServerPush;
 
 use Closure;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Symfony\Component\HttpFoundation\Response;
 
 class ServerPush

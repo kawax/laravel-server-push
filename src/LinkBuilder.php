@@ -3,9 +3,9 @@
 namespace Revolution\ServerPush;
 
 use Illuminate\Support\Arr;
-use Illuminate\Support\Str;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class LinkBuilder
 {
