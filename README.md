@@ -15,7 +15,7 @@ https://github.com/tomschlick/laravel-http2-server-push
 
 ## Requirements
 - PHP >= 7.2
-- Laravel >= 5.5
+- Laravel >= 6.0
 
 ## Installation
 
@@ -25,7 +25,7 @@ composer require revolution/laravel-server-push
 
 ### Publish config file (Optional)
 ```
-php artisan vendor:publish --provider="Revolution\ServerPush\Providers\ServerPushServiceProvider"
+php artisan vendor:publish --tag=server-push-config
 ```
 
 ### Add to web middleware group
@@ -43,7 +43,7 @@ protected $middlewareGroups = [
 ```php
 use Revolution\ServerPush\LinkBuilder;
 
-resolve(LinkBuilder::class)->addLink('/image/test.jpg')->addLink('/css/test.css');
+app(LinkBuilder::class)->addLink('/image/test.jpg')->addLink('/css/test.css');
 ```
 
 ## LICENSE

@@ -12,9 +12,12 @@ class ServerPushServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->publishes([
-            __DIR__.'/../config/server-push.php' => config_path('server-push.php'),
-        ]);
+        $this->publishes(
+            [
+                __DIR__.'/../config/server-push.php' => config_path('server-push.php'),
+            ],
+            'server-push-config'
+        );
     }
 
     /**
@@ -25,11 +28,15 @@ class ServerPushServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/server-push.php', 'server-push'
+            __DIR__.'/../config/server-push.php',
+            'server-push'
         );
 
-        $this->app->singleton(LinkBuilder::class, function ($app) {
-            return new LinkBuilder();
-        });
+        $this->app->singleton(
+            LinkBuilder::class,
+            function ($app) {
+                return new LinkBuilder();
+            }
+        );
     }
 }
