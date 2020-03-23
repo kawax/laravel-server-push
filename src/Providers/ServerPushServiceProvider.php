@@ -8,17 +8,13 @@ use Revolution\ServerPush\LinkBuilder;
 class ServerPushServiceProvider extends ServiceProvider
 {
     /**
-     * Bootstrap the application services.
+     * All of the container singletons that should be registered.
+     *
+     * @var array
      */
-    public function boot()
-    {
-        $this->publishes(
-            [
-                __DIR__.'/../config/server-push.php' => config_path('server-push.php'),
-            ],
-            'server-push-config'
-        );
-    }
+    public $singletons = [
+        LinkBuilder::class => LinkBuilder::class,
+    ];
 
     /**
      * Register the service provider.
@@ -28,15 +24,21 @@ class ServerPushServiceProvider extends ServiceProvider
     public function register()
     {
         $this->mergeConfigFrom(
-            __DIR__.'/../config/server-push.php',
+            __DIR__.'/../../config/server-push.php',
             'server-push'
         );
+    }
 
-        $this->app->singleton(
-            LinkBuilder::class,
-            function ($app) {
-                return new LinkBuilder();
-            }
+    /**
+     * Bootstrap the application services.
+     */
+    public function boot()
+    {
+        $this->publishes(
+            [
+                __DIR__.'/../../config/server-push.php' => config_path('server-push.php'),
+            ],
+            'server-push-config'
         );
     }
 }

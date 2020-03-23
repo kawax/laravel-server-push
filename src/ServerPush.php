@@ -25,7 +25,7 @@ class ServerPush
         $response = $next($request);
 
         if ($this->shouldPush($request, $response)) {
-            $builder = resolve(LinkBuilder::class);
+            $builder = app(LinkBuilder::class);
 
             $response->headers->set('Link', $builder->render(), false);
         }
