@@ -32,19 +32,19 @@ class TestCase extends \Orchestra\Testbench\TestCase
         $app['config']->set('server-push', [
             'default_links' => [
                 'styles' => [
-                    'css/test.css',
+                    '/css/test.css',
                 ],
 
                 'scripts' => [
-                    'js/test.js',
+                    '/js/test.js',
                 ],
 
                 'images' => [
-                    'image/test.jpg',
+                    '/image/test.jpg',
                 ],
 
                 'fonts' => [
-                    'font/test.woff2',
+                    '/font/test.woff2',
                 ],
             ],
 

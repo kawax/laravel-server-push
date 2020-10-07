@@ -32,7 +32,7 @@ class LinkBuilder
             $path = Arr::get($link, 'path');
             $type = Arr::get($link, 'type');
 
-            return "<{$path}>; rel=preload; as={$type}".($type==='font'?'; crossorigin':'');
+            return "<{$path}>; rel=preload; as={$type}".($type === 'font' ? '; crossorigin' : '');
         });
 
         return $links->implode(',');

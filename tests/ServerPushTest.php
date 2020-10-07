@@ -17,7 +17,8 @@ class ServerPushTest extends TestCase
         $links = $builder->render();
 
         $this->assertNotEmpty($links);
-        $this->assertStringContainsString('<css/test.css>; rel=preload; as=style', $links);
+        $this->assertStringContainsString('</css/test.css>; rel=preload; as=style', $links);
+        $this->assertStringContainsString('</font/test.ttf?id=aaaa>; rel=preload; as=font; crossorigin', $links);
     }
 
     public function testManifestDisable()
@@ -52,11 +53,11 @@ class ServerPushTest extends TestCase
          * @var Response $res
          */
         $res = $middle->handle(Request::create(''), function ($request) {
-            return Response::create('', 200, ['Content-Type' => 'text/html']);
+            return new Response('', 200, ['Content-Type' => 'text/html']);
         });
 
         $this->assertTrue($res->headers->has('Link'));
-        $this->assertStringContainsString('<css/test.css>; rel=preload; as=style', $res->headers->get('Link'));
+        $this->assertStringContainsString('</css/test.css>; rel=preload; as=style', $res->headers->get('Link'));
     }
 
     public function testMiddlewareRedirect()
@@ -64,7 +65,7 @@ class ServerPushTest extends TestCase
         $middle = new ServerPush();
 
         $res = $middle->handle(Request::create(''), function ($request) {
-            return RedirectResponse::create('http://localhost');
+            return new RedirectResponse('http://localhost');
         });
 
         $this->assertFalse($res->headers->has('Link'));
@@ -75,7 +76,7 @@ class ServerPushTest extends TestCase
         $middle = new ServerPush();
 
         $res = $middle->handle(Request::create('', 'POST'), function ($request) {
-            return Response::create('', 200, ['Content-Type' => 'text/html']);
+            return new Response('', 200, ['Content-Type' => 'text/html']);
         });
 
         $this->assertFalse($res->headers->has('Link'));
