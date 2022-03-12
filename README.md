@@ -1,5 +1,6 @@
 # Laravel Server Push Middleware
 
+[![tests](https://github.com/kawax/laravel-server-push/actions/workflows/tests.yml/badge.svg)](https://github.com/kawax/laravel-server-push/actions/workflows/tests.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/8fa23e8f590eb023ac91/maintainability)](https://codeclimate.com/github/kawax/laravel-server-push/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/8fa23e8f590eb023ac91/test_coverage)](https://codeclimate.com/github/kawax/laravel-server-push/test_coverage)
 
