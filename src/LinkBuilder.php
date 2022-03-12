@@ -68,8 +68,7 @@ class LinkBuilder
     /**
      * @param  string  $path
      * @param  string|null  $type
-     *
-     * @return  $this
+     * @return $this
      */
     public function addLink(string $path, string $type = null): self
     {
@@ -85,7 +84,6 @@ class LinkBuilder
 
     /**
      * @param  string  $path
-     *
      * @return string
      */
     protected function type(string $path): string
