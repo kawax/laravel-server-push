@@ -3,19 +3,9 @@
 namespace Revolution\ServerPush\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Revolution\ServerPush\LinkBuilder;
 
 class ServerPushServiceProvider extends ServiceProvider
 {
-    /**
-     * All of the container singletons that should be registered.
-     *
-     * @var array
-     */
-    public $singletons = [
-        LinkBuilder::class => LinkBuilder::class,
-    ];
-
     /**
      * Register the service provider.
      *

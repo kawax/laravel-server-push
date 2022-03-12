@@ -9,10 +9,7 @@ use Illuminate\Support\Str;
 
 class LinkBuilder
 {
-    /**
-     * @var Collection
-     */
-    protected $links;
+    protected Collection $links;
 
     public function __construct()
     {
@@ -74,7 +71,7 @@ class LinkBuilder
      *
      * @return  $this
      */
-    public function addLink(string $path, string $type = null)
+    public function addLink(string $path, string $type = null): self
     {
         $link = [
             'path' => $path,
