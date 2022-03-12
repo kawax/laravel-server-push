@@ -14,7 +14,6 @@ class ServerPush
      *
      * @param  Request  $request
      * @param  Closure  $next
-     *
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -36,7 +35,6 @@ class ServerPush
     /**
      * @param  Request  $request
      * @param  Response  $response
-     *
      * @return bool
      */
     protected function shouldPush(Request $request, $response): bool
